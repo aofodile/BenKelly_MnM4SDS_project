@@ -3,6 +3,7 @@ import numpy as np
 from testhough import hough_maker
 from testhsv import hsv_maker
 from testinfo import info
+from pix_neigb import pix_find
 
 def main(video):
     while True:
@@ -13,9 +14,11 @@ def main(video):
         if key == ord('p'):
             cv.waitKey(-1)
         hsvframe = hsv_maker(frame)
-        houghframe = hough_maker(frame)
-        cv.imshow("HSV",hsvframe)
-        cv.imshow("Hough",houghframe)
+        #houghframe = hough_maker(frame)
+        #cv.imshow("HSV",hsvframe)
+        #cv.imshow("Hough",houghframe)
+        new_f = pix_find(10,hsvframe)
+        cv.imshow("pix",new_f)
         if key == ord('q') or key == 27:
             break
     video.release()
@@ -31,7 +34,8 @@ def testout(video):
         info(hsvframe)
         break
 
+
 if __name__ == "__main__":
-    video = cv.VideoCapture(r"../../footage/chipper.mp4")
-    ##main(video)
-    testout(video)
+    video = cv.VideoCapture(r"D:/Dev/gitVideo/chipper.mp4")
+    main(video)
+    ##testout(video)
