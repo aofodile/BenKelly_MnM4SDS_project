@@ -46,6 +46,6 @@ def ballfind(frame):
         else:
             ball_keys = cv.drawKeypoints(frame, ball_points, np.array([]), (0,0,255), cv.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
     except:
-        ball_keys = cv.drawKeypoints(frame, ball_points, np.array([]), (255,0,0), cv.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+        ball_keys = cv.drawKeypoints(frame, ball_points, np.array([]), (0,255,0), cv.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
     return ball_keys
 

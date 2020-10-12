@@ -27,6 +27,6 @@ def main(video):
     cv.destroyAllWindows()
 
 if __name__ == "__main__":
-    ##cap = cv.VideoCapture(r'D:/Dev/gitVideo/longgame_trim.mp4')
+    cap = cv.VideoCapture(r'D:/Dev/gitVideo/longgame_trim.mp4')
     main(cap)
     
