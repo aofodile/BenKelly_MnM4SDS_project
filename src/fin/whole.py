@@ -4,6 +4,7 @@ from blob import finder
 from hough import hougher
 from track import tracker
 from hsv import hsver
+from rollwind import rolling_window
 ##from contour import cont_maker
 
 def main(video):
@@ -18,6 +19,7 @@ def main(video):
         if key == ord('p'):
             cv.waitKey(-1)
         frame = hsver(frame)
+        frame = rolling_window(frame,4,1)
         frame = finder(frame)
         ##frame = cont_maker(frame)
         cv.imshow("Final",frame)
