@@ -5,6 +5,7 @@ from hough import hougher
 from track import tracker
 from hsv import hsver
 from rollwind import rolling_window
+from med import medfill
 ##from contour import cont_maker
 
 def main(video):
@@ -18,12 +19,15 @@ def main(video):
         key = cv.waitKey(10)
         if key == ord('p'):
             cv.waitKey(-1)
-        frame = hsver(frame)
-        frame = rolling_window(frame,4,1)
-        frame = finder(frame)
+        ##frame = medfill(frame)
+        ##frame = rolling_window(frame,4,1)
         ##frame = cont_maker(frame)
+        frame = hsver(frame)
+        newframe = hougher(frame)
+        frame = finder(frame)
         cv.imshow("Final",frame)
-        if key == ord('q') or key == 27:
+        cv.imshow("Houghs",newframe)
+        if key == ord('q'):
             break
     video.release()
     cv.destroyAllWindows()
