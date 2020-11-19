@@ -31,7 +31,7 @@ def main(video,info):
         players,ball,coords = finder(processed)
         fieldW = field.addplayers(coords,flatP)
         cv.imshow(dst_window,fieldW)
-        cv.imshow("Players",players)
+        cv.imshow("Players",ball)
         #cv.imshow("Ball",ball)
         if key == ord('q'):
             break
@@ -39,6 +39,6 @@ def main(video,info):
     cv.destroyAllWindows()
 ###########################
 if __name__  == "__main__":
-    cap = cv.VideoCapture(r'D:/Dev/gitVideo/longgame_trim.mp4')
+    cap = cv.VideoCapture(r'D:/Dev/gitVideo/pan_video.mp4')
     info = {'height':280,'width':360,'pad':20}
     main(cap,info)

@@ -20,9 +20,9 @@ class Field:
         return field
     def addplayers(self,coords,field):
         red = (0,0,255)
-        for coord in coords['players']:
+        for coord in coords['ball']:
             ##field[int(coord[1]),int(coord[0])] = red
-            field = cv.circle(field,(int(coord[0]),int(coord[1])),20,red,2)
+            field = cv.circle(field,(int(coord[0]),int(coord[1])),10,red,2)
         return field
         
     
