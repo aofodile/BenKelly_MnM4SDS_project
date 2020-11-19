@@ -8,11 +8,18 @@ from lib.video_info import getinfo
 def main(video,info):
     src_window = "Source"
     dst_window ="Output"
-    field = Field(info)
-    flat = field.makeAppField()
-    flatP = field.makepadding(flat)
     width,height = getinfo(video)
+    try:
+        info['height'] = int(height)
+        info['width'] = int(width)
+    except:
+        pass
+    field = Field(info)
+    ##flat = field.makeAppField()
+    ##flatP = field.makepadding(flat)
     while True:
+        flat = field.makeAppField()
+        flatP = field.makepadding(flat)
         ret,frame = video.read()
         if frame is None:
             print("Frame is None")
@@ -22,7 +29,8 @@ def main(video,info):
             cv.waitKey(-1)
         processed = transform(frame)
         players,ball,coords = finder(processed)
-        #cv.imshow(dst_window,flatP)
+        fieldW = field.addplayers(coords,flatP)
+        cv.imshow(dst_window,fieldW)
         cv.imshow("Players",players)
         #cv.imshow("Ball",ball)
         if key == ord('q'):

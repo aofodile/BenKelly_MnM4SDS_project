@@ -18,6 +18,11 @@ class Field:
         cv.line(field, coords[1], coords[2], colors, 2)
         cv.line(field, coords[3], coords[0], colors, 2)
         return field
-    def addToField(self,PlayerCoords):
-        pass
+    def addplayers(self,coords,field):
+        red = (0,0,255)
+        for coord in coords['players']:
+            ##field[int(coord[1]),int(coord[0])] = red
+            field = cv.circle(field,(int(coord[0]),int(coord[1])),20,red,2)
+        return field
+        
     
