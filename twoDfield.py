@@ -18,3 +18,6 @@ class Field:
         cv.line(field, coords[1], coords[2], colors, 2)
         cv.line(field, coords[3], coords[0], colors, 2)
         return field
+    def addToField(self,PlayerCoords):
+        pass
+    
