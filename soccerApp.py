@@ -4,16 +4,12 @@ from twoDfield import Field
 from lib.videoProcessing import transform
 from lib.playerDetection import finder
 from lib.video_info import getinfo
+from lib.mousefield import mouseGet
+from lib.warpfield import warped
 #####################
-def main(video,info):
-    src_window = "Source"
+def main(video,info,points):
+    ##src_window = "Source"
     dst_window ="Output"
-    width,height = getinfo(video)
-    try:
-        info['height'] = int(height)
-        info['width'] = int(width)
-    except:
-        pass
     field = Field(info)
     ##flat = field.makeAppField()
     ##flatP = field.makepadding(flat)
@@ -21,6 +17,7 @@ def main(video,info):
         flat = field.makeAppField()
         flatP = field.makepadding(flat)
         ret,frame = video.read()
+        frame = warped(frame,points)
         if frame is None:
             print("Frame is None")
             break
@@ -32,6 +29,7 @@ def main(video,info):
         fieldW = field.addplayers(coords,flatP)
         cv.imshow(dst_window,fieldW)
         cv.imshow("Players",ball)
+        cv.imshow("Source_Warped",frame)
         #cv.imshow("Ball",ball)
         if key == ord('q'):
             break
@@ -41,4 +39,8 @@ def main(video,info):
 if __name__  == "__main__":
     cap = cv.VideoCapture(r'D:/Dev/gitVideo/pan_video.mp4')
     info = {'height':280,'width':360,'pad':20}
-    main(cap,info)
+    height,width,points = mouseGet(cap)
+    info['height'] = 400
+    info['width'] = 800
+    video = cv.VideoCapture(r'D:/Dev/gitVideo/pan_video.mp4')
+    main(video,info,points)

@@ -13,7 +13,7 @@ def mouseGet(video):
     def mousedraw(event,x,y,flags,params):
         ##coords = {'topRight':0,"topLeft":0,"bottomRight":0,"bottomLeft":0}
         if event == cv.EVENT_LBUTTONDBLCLK:
-            points.append([x,y])
+            points.append((x,y))
     while True:
         cv.namedWindow('Frame')
         cv.setMouseCallback('Frame',mousedraw)
