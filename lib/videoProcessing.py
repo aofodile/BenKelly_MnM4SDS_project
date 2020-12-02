@@ -2,8 +2,8 @@ import cv2 as cv
 import numpy as np
 ################
 def hsver(frame):
-    low = {"H":20,"S":50,"V":50}
-    high = {"H":100,"S":225,'V':175}
+    low = {"H":27,"S":108,"V":82}
+    high = {"H":76,"S":255,'V':152}
     ##mask = fgbq.apply(frame,learningRate = 0.02)
     frame_HSV = cv.cvtColor(frame,cv.COLOR_BGR2HSV)
     frame_threshold = cv.inRange(frame_HSV,(low["H"],low["S"],low["V"]),(high["H"],high['S'],high["V"]))
@@ -20,6 +20,6 @@ def rolling_window(a, window, step_size):
 #####################
 def transform(frame):
     hsv= hsver(frame)
-    rolling = rolling_window(hsv,3,1)
-    final = medfill(rolling)
-    return final
+    ##rolling = rolling_window(hsv,3,1)
+    ##final = medfill(rolling)
+    return hsv

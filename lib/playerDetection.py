@@ -10,16 +10,16 @@ def finder(frame):
 def playerfind(frame):
     ##Params
     params = cv.SimpleBlobDetector_Params()
-    params.minThreshold = 100
-    params.maxThreshold = 1000
+    params.minThreshold = 50
+    params.maxThreshold = 200
     params.filterByArea = True
-    params.minArea = 200
+    params.minArea = 75
     params.filterByColor = True
     params.blobColor = 0
     params.filterByCircularity = True
-    params.minCircularity = 0.1
+    params.minCircularity = 0.2
     params.filterByConvexity = True
-    params.minConvexity = 0.1
+    params.minConvexity = 0.2
     params.filterByInertia = True
     params.minInertiaRatio = 0.002
     ###Blob finding

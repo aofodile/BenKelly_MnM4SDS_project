@@ -28,7 +28,7 @@ def main(video,info,points):
         players,ball,coords = finder(processed)
         fieldW = field.addplayers(coords,flatP)
         cv.imshow(dst_window,fieldW)
-        cv.imshow("Players",ball)
+        cv.imshow("Players",players)
         cv.imshow("Source_Warped",frame)
         #cv.imshow("Ball",ball)
         if key == ord('q'):

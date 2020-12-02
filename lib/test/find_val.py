@@ -52,7 +52,7 @@ def on_high_V_thresh_trackbar(val):
     high_V = max(high_V, low_V+1)
     cv.setTrackbarPos(high_V_name, window_detection_name, high_V)
 ##
-cap = cv.VideoCapture(r'../footage/longgame.mp4')
+cap = cv.VideoCapture(r'D:/Dev/gitVideo/pan_video.mp4')
 ##
 cv.namedWindow(window_capture_name)
 cv.namedWindow(window_detection_name)
