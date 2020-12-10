@@ -11,22 +11,23 @@ def main(video,info,points):
     ##src_window = "Source"
     dst_window ="Output"
     field = Field(info)
-    ##flat = field.makeAppField()
-    ##flatP = field.makepadding(flat)
+    #flat = field.makeAppField()
+    #flatP = field.makepadding(flat)
     while True:
-        flat = field.makeAppField()
-        flatP = field.makepadding(flat)
-        ret,frame = video.read()
-        frame = warped(frame,points)
-        if frame is None:
+        flat = field.makeAppField()# Makes Field
+        flatP = field.makepadding(flat)#
+        ret,frame = video.read()#Reads in video file
+        frame = warped(frame,points)#Video Warping Function
+        if frame is None:#Stops code when video ends
             print("Frame is None")
             break
         key = cv.waitKey(10)
-        if key == ord('p'):
+        if key == ord('p'):#Pauses video
             cv.waitKey(-1)
-        processed = transform(frame)
-        players,ball,coords = finder(processed)
-        fieldW = field.addplayers(coords,flatP)
+        processed = transform(frame)#Video Proccessing from lib/videoProcessing.py
+        players,ball,coords = finder(processed)#Blob detection from lib/playerDetection.py
+        fieldW = field.addplayers(coords,flatP)#Field object
+        ##Shows Video Output
         cv.imshow(dst_window,fieldW)
         cv.imshow("Players",players)
         cv.imshow("Source_Warped",frame)
@@ -37,6 +38,7 @@ def main(video,info,points):
     cv.destroyAllWindows()
 ###########################
 if __name__  == "__main__":
+    ##Code is used to Cut field, and start the main application
     cap = cv.VideoCapture(r'D:/Dev/gitVideo/pan_video.mp4')
     info = {'height':280,'width':360,'pad':20}
     height,width,points = mouseGet(cap)

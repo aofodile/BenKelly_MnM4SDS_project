@@ -1,5 +1,6 @@
 import cv2 as cv 
 import numpy as np
+#Function, and methods for the player, and ball detection
 ##################
 def finder(frame):
     playerframe,playerCoords = playerfind(frame)

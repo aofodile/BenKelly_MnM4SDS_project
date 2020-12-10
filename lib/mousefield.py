@@ -1,6 +1,7 @@
 import cv2 as cv 
 import numpy as np
-
+#Gets field information from user, and edits the field of view to Top down
+#####################
 def totalpic(points):
     heigths = [i[0] for i in points]
     widths = [i[1] for i in points] 
